@@ -1,0 +1,153 @@
+From wtanksle@owl.csusm.edu Fri Jun 27 06:42:25 1997
+Return-Path: wtanksle@owl.csusm.edu
+Received: from lassie.eunet.fi (lassie.eunet.fi [192.26.119.7]) by luola.kontu.bbs.fi (8.7.5/8.7.3) with SMTP id KAA21334 for <moonlite@kontu.bbs.fi>; Fri, 27 Jun 1997 10:29:08 +0300
+Received: from owl.csusm.edu by lassie.eunet.fi with SMTP id AA14570
+  (5.67a/IDA-1.5 for <moonlite@kontu.bbs.fi>); Fri, 27 Jun 1997 10:28:19 +0300
+Received: from ciscots1_14.csusm.edu by owl.csusm.edu (AIX 4.1/UCB 5.64/4.03)
+          id AA27188; Fri, 27 Jun 1997 00:10:52 -0700
+From: wtanksle@owl.csusm.edu (William Tanksley)
+To: moonlite@kontu.bbs.fi
+Subject: Re: Random number generation for RPG Roguelike game :-)
+Date: Thu, 26 Jun 1997 23:42:25 -0400
+Reply-To: wtanksle@owl.csusm.edu
+Message-Id: <hazszgUEF5UY089yn@owl.csusm.edu>
+In-Reply-To: <33b2a4bd.36710313@mail.kontu.bbs.fi>
+Lines: 135
+Status: 
+
+> Hello William!
+
+> I am writing to you to ask for a small favor. I heard that Ancient
+>Domains of Mystery uses your efficient RNG algorithm for random
+>numbers and Thomas mailed me that it really is fast and good system
+>for RPG games.
+
+> 1.5 weeks ago I started writing my own Roguelike with DJGPP
+>C-compiler and I am in need of a good RNG generator. The one in
+>C-library sucks bad. :-O
+
+> Would you help me with this? I will give all credits to you If I use
+>your code in my game.
+
+Wow, thank you (and Thomas).  Yes, I'd be glad to do that.
+
+The copy I gave Thomas had several functions which made it act like
+rand(); there was a seed() and getseed(), as well as rand().  I've
+changed that in this version -- I found out that the BEST thing you
+can do it ONLY seed it once, at game startup; from then on, ALWAYS
+save the whole RNG state table in the savefile, and use it.
+
+Okay, after my sig I'll toss you the file.  The 'seed' function is
+RC4RandomSetSeed; give it 32 bits of seed.  The state which you'll
+want to save in your savefile is 's', 'i', and 'j'.
+
+If this doesn't fit your needs, let me know and I'll modify it.  If
+you'd like to understand it, I'd be pleased to explain; it's
+suprisingly simple (not the initiation; that's kinda hard, but you
+should get the hang of the rest easily).
+
+Some of the things I can change it for are:
+
+  - different-sized keys (NEVER above 40 bits, by US law -- a dumb
+    law, but I don't wanna get sued for exporting munitions)
+  - Multiple seperate generators -- if you want one generator to
+    handle the monsters and one to handle the objects, for example.
+
+If you think you see a way to make this better, please tell me.  In
+general, random numbers are REALLY tricky beasts, and you don't want
+to mess with them without a lot of college degrees or -- what I got
+-- work experience.
+
+One last thing: this RNG, named RC4, is also a powerful encryption.
+To encrypt something with it, seed the generator with the right key
+and XOR the RC$ bytes with the plaintext.  To decrypt, do the exact
+same thing.
+
+RC4 is so powerful that even a single BIT in it is random -- unlike
+all the other generators, you can use the lowest bits without having
+to worry.  If you often need 1d2 (flip a coin) dice rolls, you can
+write a quick functions which does this:
+
+return RC4Random() & 1
+
+And you'll get a good mix of zeros and ones.
+
+RC4Random will return an unsigned char between 0 and 255; Random
+will return a 32-bit random number.  If you need smaller numbers
+(most of the time you will) you can save a lot of time by writing
+your own extractor -- call RC4Random twice and place them together
+to make a 16-bit number when you only need numbers below 64K.
+
+> moonlite@kontu.bbs.fi   Check out my roguelike project
+
+-Billy
+
+#include <stdlib.h>
+typedef unsigned long int u32b;
+
+/* State variables.  Feel free to make these local or global. */
+static unsigned char s[256];
+static u32b rseed;
+static unsigned char i, j;
+
+unsigned char RC4Random( void )
+{
+	unsigned char ti, tj, x;
+	
+	ti = s[i];
+	j = (unsigned char)(j+ti);
+	tj = s[j];
+	
+	s[i] = tj;
+	s[j] = ti;
+	
+	x = s[ (unsigned char)(ti+tj) ];
+	
+	i = (unsigned char)(i+1);
+	return x;
+}
+
+static void RC4RandomSetSeed( u32b seed )
+{
+	unsigned char t, key[4];
+	u32b index;
+	
+	rseed = seed;
+	
+	/* Fill the key */
+	for ( t=0; t<4; t++ )
+		key[t] = (unsigned char)((seed>>(t*8)) & 0xff);
+	
+	/* Fill the table... */
+	for ( index=0; index<256; index++)
+		s[index] = (unsigned char)index;
+	
+	/* And shuffle it. */
+	for(index = 0, j = 0; index<256; index ++)
+	{
+		t = s[index];
+		/* This was originally index%keyLength, but since
+		 * keyLength == 4, we can use anding by 3. */
+		j += (unsigned char)(t + key[index & 3]);
+		s[index] = s[j];
+		s[j] = t;
+	}
+	
+	j = i = 0;
+}
+
+u32b Random( u32b maximum )
+{
+	u32b result;
+	
+	result =(long)RC4Random() + 
+			((long)RC4Random() << 8) +
+			((long)RC4Random() << 16) +
+			((long)RC4Random() << 24);
+	
+	if ( !maximum )
+		return result;
+	
+	return result % maximum;
+}
+

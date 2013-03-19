@@ -1,0 +1,108 @@
+
+/************ MISSILE WEAPONS **************/
+
+1) Et‰isyysvaikutus! Mit‰ kauempana sit‰
+   vaikeampaa osua, and vice versa.
+   T‰h‰n voisi vaikuttaa joku atribuutti
+   kuten esimerkiksi con+dex.
+
+
+/*************** SAVE **********************/
+
+
+
+/************* MUITA ***********************/
+
+1) Jos lohkare oviaukossa luulee peli ett‰ se on ovi 
+   (pyyt‰‰ avaamaan ovea kun k‰velee p‰in!)
+
+
+ Segfault tuli kun kuolin... ei aina!
+
+ Kuolemasyy ei jostain syyst‰ mene aina oikein!
+ 	- t‰h‰n voisi kehitell‰ uuden rutiinin ja
+	  tietueen johon tallennetaan tappaja
+	
+
+ Poista materiaalin tulostus pickup/drop toiminnoissa
+
+ PLAYER_HANDLEITEMS -> inv_handleitems!!
+
+
+ ARMOREISTA JA RESISTANSSEISTA
+ -----------------------------
+
+ CALCULATEMELEEHIT funktiossa TDV vahennys uuteen systeemiin!
+
+ Tietyn ruumiinosan (jossa on HPSlot) armor tuo materiaalivastusta vain 
+ siihen ruumiinosaan.
+
+ Amuletit, sormukset, braceletit tuo KOKO RUUMIISEEN. :)
+
+ race AC asetetaan jokaisen ruumiinosan ac:ksi.
+
+
+
+ o * TEE *ERRORLOG()* funktio *
+
+ o Esineen ika ei kai saisi nakya ennenkuin se on identifyity? vai
+
+ o Ovea ei pitaisi voida sulkea jos esine/monsteri oviaukossa. 
+
+
+ o Jos pelaajan kohdalla on esine, ei maaliksi (spelleihin) voi
+   ottaa itse‰‰n...
+
+ o Negatiivista vahinkoa!! Korjaa!
+
+ o Monstereiden liikkeiss‰ vikaa. 
+
+ o kauppiaat ei lyo aina takaisin?
+
+ o materiaalien hajoamisnopeus pienemmaksi
+
+ o 
+
+
+tarkista:
+ o Varastaminen ei toimaa oikein
+   - jos kauppias seisoo ovella kun isken sit‰, niin se sekoaa
+   - ulos k‰velless‰ esineet ei merkkaantuneet omiksi!
+   Pit‰isi olla korjattu
+
+ o Dungeonissa kauppa ei yhdistynyt muihin huoneisiin (k‰yt‰v‰ reunalla!)
+
+ o "fabric"-materiaali joksikin muuksi.
+
+ o "aseskillien" lennossa oppiminen ei toiminut joskus kun k‰dess‰
+   oli joku muukin esine kuin ase.
+
+ o BUGI, kaatuu spelleissa?! Suunnan valinta? Shit
+
+ o Jos missileksi laittaa LYHDYN niin valo n‰kyy. Mieti sit‰.
+   Olisi hienoa jos heitt‰m‰ll‰ lyhdyn n‰kyisi sen valo lennon aikana :)
+ 
+
+
+Ideoita:
+
+ o "Magic Eye"-spelli, kayttaen "show_at()" funkkaria!
+
+ o "Sense monsters" onnistuu kun kutsuu LOS-ia monsterien koordinaatissa!
+   YES
+
+ o Hahmonluontiin:
+
+   - jos valitsee jonkun tietyn opettajan, joku toinen opettaja
+     voisi disabloitua...
+   - opiskelunaikaiset hasardit, tai bonukset
+     Esim. When you were 12, a great plague stroke your town. 
+     Esim. At the age of 13 your distant uncle died and you ...
+
+ o MONSTERI-IDEAT
+   - Monsteri hyokkaa aina viimeisen hyokkaajan kimppuun.
+   - Voisi vaikka etsia sellasen monsterin jolla pienin hp etc.
+
+ o "path walking", eli esim. kauppias l‰htee ulos rosvon per‰‰n ja 
+   palaa takaisin samaa reitti‰.
+

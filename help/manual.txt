@@ -1,0 +1,1399 @@
+                      =-=-=-=-=-=-=-=-=-=-=-=-=-=-
+                        Legend of Saladir V0.34
+
+                   Shoot the damn shopkeeper Release
+
+                   (C) Erno Tuomainen 1997/1998/1999
+                      =-=-=-=-=-=-=-=-=-=-=-=-=-=-
+               
+*********
+INTROITUS
+*********
+
+The Legend of Saladir is a roguelike role playing game. The game is
+set in a fantasy world called Salmorria. You have been given the shoes
+of an burly adventurer seeking for glorious quests and big amounts
+gold. 
+
+
+**********
+BRIEF NOTE About the latest version V0.34
+**********
+
+At first, sorry for the *long* delay. Almost exactly a year has passed
+since the last public release. I don't know what happened and I really
+can't believe that a year has passed. But now, here it is, a new
+version of the game. It might not be what you've been waiting for but
+still, there're a lot of new features in. 
+
+I also know that this version might not be very playable and doesn't
+contain much new game content. The main focus lately has been in the
+game engine which makes all the nice things possible. But for the next
+version I will try to tune up things a bit, add more towns and
+dungeons, quests and so on.
+
+So what about the new features since V0.30 ?
+
+The most important (and probably not working) feature is the SAVE/LOAD
+feature. It allows you to save and load games in any point of the
+game. You can use :L to load and :S for saving.
+
+If you want to know more about these changes, read the included text file,
+history.txt.
+
+As you see, the quest code is now included, but it's not fully working
+yet. You can find some quests and some of them you can also
+complete. But the system needs a lot more work.
+
+
+
+
+About the Linux port
+-------------------- 
+I am pretty sure the Linux version contains a lot of bugs and other silly
+quirks but I've TRIED my best with the current Linux knowledge I have. I
+must admit that I am a Linux newbie, and this is absolutely the first Linux
+program I've ever made with C/C++. But what I've tested, it works atleast in
+my system and it hasn't caused any system corruptions (yet). There's one
+advice for you:
+
+                    !DON'T PLAY THIS GAME AS A ROOT!
+
+Either use your secondary "user" account or set it for global system use as
+described in Linux_readme.txt. In any case, don't play as the root, please!
+This is an advice from one Linux user to another.
+
+
+Any comments relating to the game can forwarded to me via email:
+ernomat@evitech.fi
+
+P.S. This document will eventually evolve into a Legend of Saladir Manual.
+Hopefully.
+
+
+
+*****************
+STARTING THE GAME
+*****************
+
+Requirements:
+-------------
+
+The Legend of Saladir needs either a DOS/WIN95 or (from V0.30 on) a Linux
+operating system. Currently there're only versions for IBM PC (i386)
+compatibles.
+
+The DOS/WIN95 version requires DPMI-services because it was compiled with a
+real 32-bit compiler (DJGPP). DPMI comes with Windows, but if you're playing
+in the DOS environment then you need to use ie. CWSDPMI.EXE. (Included with
+the DOS version)
+
+Linux version has been compiled with GNU's glibc2 (V2.0.7-5, aka libc6) and
+requires ELF support from your kernel. Both dynamically and statically
+linked versions are available. Static version dont't need any external
+libraries but requires more memory and disk space.
+
+Tech: The Linux version has been compiled with GNU CC (gcc) V2.8.1-1) and
+the DOS version with DJGPP V2.01 which is based on GNU CC V2.7.x versions.
+The system used for developing is a self built (with care and love) IBM-PC
+compatible equipped with AMD-K6 200MHz, 128MB RAM, 2.5GB HD, S3 Virge (+
+Diamond Monster3D Voodoo2 3Dfx), Linux 2.103 and Win95.
+
+Starting in DOS/WIN95: 
+---------------------- 
+
+Start the game from the same directory where files SALADIR.EXE and
+OUTWORLD.MAP are located.
+
+When starting, Saladir will make a temporary directory called TEMPDATA under
+the same directory where SALADIR.EXE is located. The game will use this
+directory to store some temporary data it needs. Do not delete files inside
+this directory when playing the game, Saladir will eventually delete all
+files it has created.
+
+Linux 
+----- 
+
+First of all, read the file Linux_readme.txt for further instructions on how
+to install the game for Linux systems. 
+
+Basically you don't need to do anything special, if you're playing the game
+just by yourself, but if you're in a multiuser system and many users have
+access to the game you might want to check the better way to install the
+game.
+
+The above instructions are mostly true for Linux too. Due to the multiuser
+nature, the Linux version handles some things a bit different.
+
+Temporary files will be saved in the HOME-directory of the current user who
+is playing the game. The temp directory will be named as "~/.saladirtmp".
+
+Start the game with command "saladir" or "saladir-static" for statically
+linked version.
+
+
+Optional command line options in all versions:
+
+ -s	if you don't want the "animated logo" pop up when the game starts,
+	putting this will skip it.
+ -l     Displays the license for the game.
+
+
+
+
+************************ 
+CREATING YOUR ADVENTURER 
+************************
+
+After the game has loaded, you will be prompted for a name, this is what you
+will be known as in the game and score table. If you have difficulties
+thinking names for your character, like I do, you can just press enter and
+let the game create a unique name for you. Try my "Name-o-Matic". :) A word
+of warning, it sometimes creates quite silly names. :)
+
+The character generation in Saladir is still very unfinished. But here's how
+it works for now.
+
+Your character will be built in two stages. 
+	1) Issue the attributes (STR, DEX, etc) which determine
+	   your physical and mental condition.
+	2) Learn the skills, ie. select your background
+
+These two tasks can either be done by the computer automatically (Let the
+fate decide) or by yourself.
+
+Attribute points will, in any case, be distributed randomly. But in manual
+mode you have a lot more freedom to edit them.
+
+In the second stage, you learn the skills and your knowledge. This is done
+by selecting teachers. They will teach you some skills they have in their
+knowledge. In automatic mode, teachers will be selected
+automatically. Afterwards you will be issued some items relating to your
+skills. Ie. you get a random weapon suited for your best weapon skill.
+
+I've tried to make this as straightforward as possible, so it should be easy
+to use and understand.
+
+(Note! In this version, you can't edit CHARISMA, WISDOM or INTELLIGENCE
+values because these stats won't really affect anything inside the game for
+now. If I let you edit the stats you could decrease them into a minimum and
+create a character with STR=99, DEX=99, etc. Pretty damn god to me...)
+
+
+
+*****************
+KEYBOARD COMMANDS
+*****************
+
+The latest list of available key commands can always be seen inside the game
+by using the internal help features. Press key sequence ":?k" to get
+keyboard help directly, or press '?' to get the help menu where you can
+choose all the other help options too.
+
+(Note: The command interface has been redesigned after V0.30. It works very
+much like in ADOM for example.)
+
+
+Keyboard interface
+------------------
+
+Some commands work with a single key press and some require multiple keys to
+be pressed in sequence. For example, in the list you can find a command
+":1". To execute the command you must press first ':' followed by
+'1'. There's no timeout delay in multiple keypresses, you've got all the
+time you need to finish the command.
+
+When you're pressing keys for a multikey command, you will see all your
+previous keypresses at the top of your screen. When all keys for the command
+have been pressed the command will activate.
+
+In the keyboard list below, ^ followed by a letter (ie. ^A) means that you
+need to press CTRL+<letter> together.
+
+
+Here is a list of (currently) available operations and commands
+
+GENERAL COMMANDS IN THE GAME
+----------------------------
+
+:1        Apply quickskill number 1
+:0        Apply quickskill number 10
+:2        Apply quickskill number 2
+:3        Apply quickskill number 3
+:4        Apply quickskill number 4
+:5        Apply quickskill number 5
+:6        Apply quickskill number 6
+:7        Apply quickskill number 7
+:8        Apply quickskill number 8
+:9        Apply quickskill number 9
+S         Apply skills
+Z         Cast a spell
+\         Change game options
+T         Change your tactics
+^I        Cheat: Identify item
+^L        Cheat: Light on
+:b        Check your bill
+c         Close door
+^G        Debug: Create level
+:q        Display a list of quests
+@         Display character information
+?         Display help menu
+H         Display hitpoint status
+i         Display inventory
+:?k       Display keybindings
+:?m       Display manual
+:m        Display message buffer
+E         Display needed experience
+m         Display previous message
+:T        Display used game time
+V         Display version
+:t        Display world time
+A         Display your damage resistance
+d         Drop item
+e         Eat food
+KEY_F(9)  Editor: Clear map with current terrain
+KEY_F(3)  Editor: Dramode
+KEY_F(8)  Editor: Hide map
+KEY_F(6)  Editor: Load map
+KEY_F(1)  Editor: Next terrain
+KEY_F(10) Editor: ON/OFF
+KEY_F(2)  Editor: Prev terrain
+KEY_F(5)  Editor: Save map
+KEY_F(7)  Editor: Set map visible
+          Editor: Set terrain
+>         Enter downstairs
+<         Enter upstairs
+q         Equip items/View equipment
+l         Examine/Look
+,         Get item
+6         Move east
+8         Move north
+9         Move northeast
+7         Move northwest
+2         Move south
+3         Move southeast
+1         Move southwest
+4         Move west
+o         Open door
+P         Pay your bill
+p         Push
+Q         Quit without saving
+r         Read
+R         Redraw screen
+.         Rest (pass one turn)
+5         Rest (pass one turn)
+s         Search
+C         Talk with someone
+t         Throw/Shoot
+w6        Walk east
+w8        Walk north
+w9        Walk northeast
+w7        Walk northwest
+w2        Walk south
+w3        Walk southeast
+w1        Walk southwest
+w4        Walk west
+
+INVENTORY SCREEN COMMANDS
+-------------------------
+
+CTRL+O		Open a container
+CTRL+T		Transfer selected items into a container
+CTRL+I		Inventory screen help
+A..Z (shifted)	Select multiple items
+a..z		Select a single item
+
+PGUP/9		Scroll one page up
+PGDN/3		Scroll one page down
+UP/8		Scroll one item up
+DOWN/2		Scroll one item down
+ENTER		Confirm multiselection and close
+		Also by selecting any item without a SHIFT key.
+ESC/SPACE	Cancel multiselection and close
+
+
+TEXT VIEWER COMMANDS
+--------------------
+
+HOME/t		Jump to the start/top of the text
+END/b		Jump to the end/bottom of the text
+DOWN/2		Scroll a line down (go forward)
+UP/8		Scroll a line up (go backwards)
+PGUP/9/-	Previous page (page up)
+PGDN/3/+/SPC	Next page (page down)
+q/ESC/RET	Close screen
+
+
+*********************
+ABOUT GAME PLOT/GOALS
+*********************
+
+... you are an adventurer, go check it out.
+
+Please join my mailinglist (check below) and we can discuss everything
+closely. 
+
+(mailinglist temporarily closed due to some problems ...)
+
+
+******************
+SAVING AND LOADING
+******************
+
+You can save a game anytime by using ':S' command and load it back by
+pressing ':L' while playing the game.
+
+Also when you quit the game, you will be asked if you would like to
+save the current situation. 
+
+When you start the game and type in the name of your character you
+will have a choice to restore a saved game if one exists.
+
+
+****************
+INVENTORY SYSTEM
+****************
+
+Everything you pick up, is stored in your main backpack. This backpack can't
+be removed, it's always travelling with you. You can access your items by
+invoking the inventory screen by pressing 'i', this will open a new screen
+which is a view to your inventory.
+
+Not only you, but also all the other beings, persons and some special items
+can have exactly similar inventories. Some creature can carry its own
+backpack and some items (a bag for example) can have items stored inside it.
+
+When you press 'i' you will see a list of items and some brief instructions
+on how to use the inventory system. On the top of the screen, there's a
+header area which occupies a couple of lines. On the bottom of the screen,
+there's a footer area describing the commands available to you. Between
+these two sections you see an area reserved for item information, this area
+will list all your items.
+
+If you're carrying many items, it might be that all your items won't fit to
+the visible screen area. You can scroll the middle section up/down with
+these commands:
+
+	2 or DOWN	line down
+	3 or PGDN	page down
+	8 or UP		line up
+	9 or PGUP	page up
+
+In the middle section you can see item names and some of the item details.
+This section is grouped by and sorted by using the item group as a
+key. Those lines look like this:
+
+--[ ( ]-- One Handed Weapons
+  A) a new elven staff
+  B) a rusty iron sword
+
+First line tells what item gategory is in question. This like will show up
+the letter describing the item (the item will show up in the map with this
+letter) and the name of the gategory.
+
+After the gategory line there're all items belonging to this group. The
+first letter (from A to Z) will display a key which you can use to access
+the item.
+
+
+Filtering out items
+-------------------
+
+The inventory browser can filter out all items not belonging into a selected
+item group. Press the item symbol (the symbol you see when you walk around
+the dungeon) to select the group you want to view.
+
+For example, press $ to get only items belongig to MONEY-gategory. Press %
+to get only food and corpses. And so on.
+
+
+Selecting items 
+--------------- 
+
+Some of the commands and operations will open up your inventory window where
+you can select the item you want to use with the command in question. For
+example, when you try to pick up an item you will be shown a list of items
+you can pick up from the floor/ground. 
+
+Some of the commands will allow selecting multiple items and some will
+require only one item for the operation. 
+
+You can select multiple items (if the command supports that!) by pressing
+the item letter with SHIFT. So if you want to select items "a" and "b" from
+the list, press SHIFT+A and SHIFT+B to select the items. When you close the
+item screen with SPACE, the command will be executed with all items you
+selected.
+
+However, if the command only requires only one item then the first item you
+selected will be used for the command, even if you try pressing
+SHIFT+<letter>.
+
+NOTE: Commands can be applied only on items stored in your main
+inventory. Items inside any container will be first transferred to the main
+inventory first. Read more below.
+
+
+Container items (items inside items)
+------------------------------------
+
+Here's a sample hierarchial view of a sample inventory you might have during
+some point of your game.
+
+	Your inventory
+	             |
+	             sword
+	             bag
+	             | |
+	             | 21 gold coins
+	             | 15 copper coins
+	             | purse
+	             | |   |
+	             | |   diamond
+	             | |   magic marker  
+	             | |
+	             | a letter
+	             | 
+	             a scroll of genocide
+
+
+Your main inventory contains items:
+	sword, bag and a scroll of genocide
+
+The bag inside your main inventory contains:
+	21 gold coins
+	15 copper coins
+	purse
+	a letter
+
+The purse inside the bag contains:
+	diamond
+	magic marker
+
+If the inventory you're looking at contains any container items, ie. bags,
+purses or chests, you can open them up by pressing command CTRL+O and then
+selecting the container you want to open up. At any time you can open up
+your inventory and transfer items between your main inventory and the
+container you're carrying (same applies to the containers lying on the
+ground). 
+
+
+Transferring items from a container
+-----------------------------------
+
+You can open a container with command CTRL+O. 
+
+If you open a container, and then select any items you will transfer all the
+selected items to the PREVIOUS inventory level you were looking at before
+opening up the current container. The transfer will happen when you CONFIRM
+your item selection (multiselection -> confirm with ENTER, cancel with
+SPACE/ESC).
+
+Items can be transferred *TO* the previous inventory level only. 
+
+A step by step example, look at the sample hierarchial picture above:
+
+1) You open your inventory
+   you see items:   sword, bag and a scroll of genocide
+2) You press CTRL+O (open a container) and select the BAG
+   you see items:   21 gold, 15 copper, purse, a letter
+3) You press the letter of "21 Gold coins" (single selection without SHIFT)
+4) the container screen will close and you see that all 21 Gold coins were
+   transferred to your main inventory.
+
+Another step by step example:
+
+1) You open your inventory
+   you see items:   sword, bag and a scroll of genocide
+2) You press CTRL+O (open a container) and select the BAG
+   you see items:   21 gold, 15 copper, purse, a letter
+3) You press CTRL+O (open a container) and select the PURSE
+   (you're now deep inside your inventory :)
+4) You press the letter of a DIAMOND (single select withouth SHIFT)
+5) the PURSE container screen will close, you're presented with
+   a list of items inside the BAG
+   You see that the DIAMOND is now in this directory
+3) You press the letter of "DIAMOND" (single selection without SHIFT)
+4) the BAG container screen will close and you see that the DIAMOND
+   now exists in your main inventory.
+
+Transferring items into a container
+-----------------------------------
+
+You can transfer items from the current inventory level to any container
+which can be seen in the current level.
+
+First select any items you would like to transfer into a container, then
+press CTRL+T (move items into the container) and select the container you
+want those items to be stored into.
+
+Complex? Practise a little.
+
+
+********************
+FIGHTING AND BATTLES 
+********************
+
+During your adventuries you will be faced with many angry and hostile beings
+whose only aim is to chop off that ugly head of yours. So you must either
+fight them or try to run and flee away. Sadly life is not so easy as it
+would seem to be, some monsters are faster than you so most probably you're
+forced to fight. Oh, did I mention that some monsters are also more agile
+than you, so you probably must flee anyway...
+
+
+Picking up (some blood from your nose) a fight
+----------------------------------------------
+
+To fight, just move towards the position of the creature you want to
+attack. You will get a message telling if you succeeded or not.
+
+Every being in the game has fighting skills, so do you. These skills
+determine your "worthiness" in the battle. The skill affects your learning
+level with a specific weapon type. For example, with a high swords skill you
+have a greater chance to hit your target and dodge when your opponent tries
+to hit you.
+
+When you fight, you will attack the different bodyparts of the target.  This
+game uses a system of five bodyparts, all these bodyparts have their own
+hitpoints and chance to hit value. So the smaller bodyparts are harder to
+hit. 
+
+Tactics will also affect your fighting skills. So be carefull when you pick
+up a fight, check your tactics first. If you accidentally start fighting
+with a powerfull swordsman who has a sword skill of 90% then you're probably
+going to die in one blow with berzerk tactics.
+
+In this version you can't yet select a tactic to target some specific
+bodyparts. I hope to have that feature soon in the game.
+
+
+*******
+TACTICS
+*******
+
+You can select several different tactics which will affect the behaviour of
+your character in several ways.
+
+Here's a table describing the effect of the each tactic.
+
+Tactic			Hit:	Dodge:	DAM:	AC:	SPD:
+-------------------------------------------------------------------
+Coward			-30	+30	-4	+8	+30%
+Very defensive		-20	+20	-2	+6	+20%
+Defensive		-10	+10	-1	+4	+10%
+Normal (default)	normal race/class values +-0 mod
+Aggressive		+5	-10	+1	-4	no effect
+Very aggressive		+10	-20	+2	-6	no effect
+Berzerk			+20	-30	+4	-8	no effect
+
+While all aggressive tactics are good when you try to issue some serious
+damage in battles, they also can be extremely dangerous. While you have an
+increased change to give more damage with a greater chance to hit you also
+are easier target for your opponents.
+
+With defensive tactics you're faster and have a greater chance to dodge hits
+and flee from the battle but you have a lesser chance to hit your target. If
+you hit, you will also make lesser damage.
+
+A word of warning: Some monsters are known to use tactics too.
+
+
+
+******
+SKILLS
+******
+
+As I mentioned before, all creatures have a certain amount of
+skills. There're skills which affect your battles and fighting, skills of
+magic (spells) and some general skills which affect your allday living.
+
+Skill learning is mostly automatic. You learn with experience, the more you
+use your skills the more confident you get with them. 
+
+Weaponless combat	
+Daggers			
+Swords		
+Axes
+Blunt weapons
+Polearms
+Staffs
+Bows
+Throwing
+Two handed weapons
+One handed weapons
+Two weapon combat
+(shield)
+
+When you find a new weapon and you don't possess a skill for it yet, you
+will learn the specific skill for that weapon type automagically when you
+use your weapon successfully.
+
+General skills:
+---------------
+
+Food gathering		
+	This will affect your ability to take food out from corpses. You
+	apply this skill automatically when you try to eat a corpse of some
+	kind. The higher this skill is, the more food you get from the
+	corpses.
+
+Healing			
+	This skill improves your normal healing rate. Every 10% on this
+	skill will improve your success with this skill by 2.5 points.
+	So at 100% you have a 25% chance to heal a point of damage on every
+	turn. (at 50% you have 12.5% chance.)
+
+Observation 
+Alteration  
+Mysticism   
+Destruction 
+	These four skills are actually magic skills, see below for more
+	information.
+
+Find weakness
+	With this skill you can find weaknesses from your enemies. Causing
+	more critical hits. 
+	Every 10% of this skill will improve your chance to get critical hits
+	by 2.5%. So at 100% you have a 1/4 chance to issue a critical hit.
+	(25%)
+
+Searching
+	When you try searching ('s'-key) you will use this skill. It directly
+	affects your ability to find hidden things/items/locations.
+        Also affects your ability to notice some hidden things automatically
+	if a "cautious-mode" or "searching-mode" is turned on. (":s")
+
+Disarm Trap
+	By applying this skill to any known trap you can try to disarm it.
+	Failure to disarm a trap will most probably result the activation
+	of the trap.
+
+**********************
+SKILL SELECTION WINDOW
+**********************
+
+Known skills can naturally be used, or else they would be rather
+useless. Many of the skills (most for now) are automatic, and will be used
+automagically in a correct situation. But you may know some skills which
+require you to manually apply them.
+
+There is a skill selection screen where you can select a skill you want to
+use. This window can also be used for examining your skills.
+
+There're two commands, one for all skills (key 's') and one for your spells
+(magic skills) (key 'm'). 
+
+When you issue the command, you will get a screen looking like this:
+
+
++========================+
+|                        | Select a skill to apply.
+| (1)      Curse         |
+|         Confuze        | (2)
+|        Identify        |
+|        Teleport        |
+|         Healing        |
+|       ->Swords<-       |
+|         Daggers        |
+|     Food gathering     |
+|       Destruction      |
+|       Observation      | (3)
+|         Staffs         | weapon skill *Automatic*
+|          Bows          | Knowledge: 38% of 100% (promising)
+|                        | Needs 117 marks to advance!
++========================+
+
+The area (1) contains a scrolling list window displaying your known
+skills. Scroll this window up/down with A/Z/UP/DOWN keys. The currently
+selected skill will be highlighted in the center of the window.
+
+Pressing '?' will give you a description the skill which is highlighted. The
+description will appear on area (2).
+
+Area (3) displays some information on the highlighted skill.
+
+If you press ENTER or SPACE you will use the highlighted skill.  
+
+Automatic skills and manual skills will be displayed in different color
+within this window.
+
+Within this screen you can mark skills as quick skills. You can do this by
+pressing number keys 1 - 0 on. There're 10 slots for quick marked
+skills. When you mark a skill you will see a number appear before the skill
+name. This number tells you that the skill was assigned to the quick skill
+slot of that number.
+
+To use quick marked skills within the game, use commands :1 -> :0 .
+
+
+***********************
+ROAMING IN THE DUNGEONS
+***********************
+
+Dungeons can be very unhealthy places. It's not enough that they are filled
+with lethal creatures, they also contain a lot of hidden traps and other
+unhealthy features. For your own safety, you have the ability to search, use
+it wisely. 
+
+Not only traps are hidden, some passages may contain hidden doors and areas
+as well. So, high searching skill is very important, not only for your safety.
+It makes it easier to find those hidden things. 
+
+
+
+****************
+MAGIC AND SPELLS
+****************
+
+The magic in Salmorria is divided in four gategories. There're four schools
+which teach spells. The schools are:
+
+	The School of Observation
+	The School of Alteration
+	The School of Mysticism
+	The School of Destruction
+
+Your knowledge in each of these areas are marked by four skills, one for
+each school of magic. These, apart from their magical nature, belong to the
+group of generic skills.
+
+
+Observation
+
+	Observation skill is learned at the Magic School of Observation. The
+	school teaches ways to examine the real nature of
+	things. The skill itself affects directly to your Observation
+	spells. Owning a high skill in this area produces more successes
+	when casting spells of Observation. It also can affect your ability
+	to learn new Observation spells.
+
+Mysticism
+
+	Mysticism skill is learned at the Magic School of Mysticism. The
+	school teaches methods to create illusions and minor alterations
+	of nature. The skill itself affects directly to your Mysticism
+	spells. Owning a high skill in this area produces more successes
+	when casting spells of Mysticism. It also can affect your ability to
+	learn new Mysticism spells.
+
+Alteration
+
+	Alteration skill is learned at the Magic School of Alteration. The
+	school teaches magical methods and ways to alter the nature of
+	things. The skill itself affects directly to your Alteration
+	spells. Owning a high skill in this area produces more successes
+	when casting spells of Alteration. It also can affect your ability
+	to learn new Alteration spells.
+
+Destruction
+
+	Destruction skill is learned at the Magic School of Destruction. The
+	school teaches methods to permanently harm or destruct things of
+	nature. The skill itself affects directly to your Destruction
+	spells. Owning a high skill in this area produces more successes
+	when casting spells of Destruction. It also can affect your ability
+	to learn new Destruction spells.
+
+These four skills will eventually make it possible to learn spells from
+their gategory. And, if for example, you don't possess a skill of Mysticism
+then all mysticism spells will be rather useless because you don't know how
+to cast them.
+
+The magic in Salmorria is young and developing rapidly. The mages are
+constantly in the path of developing new spells and writing them down as
+scrolls.
+
+At the present time, Salmorrian mages have come up with these spells:
+
+Identify
+Bless
+Curse
+Neutralize
+Teleport
+Confuze
+Magic map
+
+            **********************************************
+            ** more skills to come in the next versions **
+            **********************************************
+
+
+********************
+STATS AND ATTRIBUTES
+********************
+
+Your character has several attributes and stats.
+
+Stats in Legend of Saladir are:
+
+STR     Strength
+TGH     Toughness
+DEX     Dexterity
+CON     Constitution
+WIS     Wisdom
+INT     Intelligence
+CHA     Charisma
+
+SPD     Speed, a derived attribute
+LUC     Luck
+
+Also, every Salmorrian item and being has an religious alignment, even if
+it's not an item or creature of religion. 
+
+
+
+*************************
+ABOUT HITPOINTS AND ARMOR
+*************************
+
+Legend of Saladir has a "specialized" way to handle the hitpoints. Hitpoints
+are a method to check in what physical condition a creature is. There are
+five HP slots where these hitpoints are stored. These slots are, 
+
+	Head,
+	Left hand, 
+	Right hand, 
+	Body (chest) 
+	Legs (both legs in one slot).
+
+Not all creatures have hands, if the creature is a flying one, it has
+wings/vanes etc. 
+
+Of course, there're some creatures which have less bodyparts. Some of them
+might not have legs for example. Ie. spiders don't have hands and worms and
+snakes have only body and head.
+
+Creature will die if the head or body hitpoints go below (or to) zero.  Also
+it will die if the total amount of hitpoints, all slots calculated together,
+fall below (or to) zero. So DON'T get confuzed if your adventurer dies when
+the HP-value on the left side of the screen displays a value above 0.
+
+Beware in combat, it's good to watch your slot hitpoints (ehm, slotpoints?)
+because if your hand hitpoints fall to zero you will not be able to fight
+anymore. Also walking is impossible with broken feet.  Protect your head and
+body properly, they are the most vital parts of your body.
+
+Armor will aid you in this. Some armor slots will protect many parts of the
+body. For example, if you're wearing a magical cloak it will protect your
+whole body and gloves with other hand armor will protect your hands and
+arms.
+
+This system is really in experimental phase, let's see if it works and what
+modifications it will need.
+
+Press 'A' during game to get your armor status. Press 'H' to get your
+hitpoint status, detailed
+
+Hitpoint regeneration happens when enough time has passed. Regeneration
+happens randomly on the damaged bodyparts. Also, if you possess a healing
+skill in your knowledge it can speed you your healing process.
+
+You can set a hitpoints alarm from the configuration menu. There you can set
+a percentage value between 0 and 100. The game will alert you when the
+hitpoints on some of your bodyparts fall below that percentage of the
+maximum hitpoints. It has been preset to 50%, and you can disable it by
+configuring a value of 0.
+
+
+
+********************************
+ABOUT TIME AND CALENDAR AND FOOD
+********************************
+
+This version has a time and calendar built in. The calendar measures the
+time passed in the world of Salmorria (The land where Saladir takes place).
+
+Every move your character makes takes a certain amount of time. If you are
+adventuring in the wilderness then the time passes faster. This is natural
+because one dungeon/town grid is much smaller than one grid in the
+wilderness map. Also beware that your food will be consumed faster when
+you're hunting wolfes in the wilderness.
+
+From V0.30 on the food system no longer uses a "time" based system. It uses
+a more traditional methods. Who knows if it will work better.
+
+You can access the calendar and passed time with ':T' and ':t'.
+
+
+
+*******
+WEAPONS
+*******
+
+If you have equipped two weapons, a one handed weapon in both of your hands,
+remember that the RIGHT hand will attack first and the LEFT hand weapon will
+be used if there is enough time left for your turn.
+
+This might be changed in the next versions by introducing a feature "left
+handed" or "right handed" person. At the moment you are right handed.
+
+If you equip a two handed weapon you will not be able to use your other hand
+because the weapon reserves it.
+
+Bows and crossbows will also reserve your both hands. Have you tried
+shooting with a bow and just one hand?
+
+If your hands gets enough damage during the combat, your weapons will drop
+down and you can't use your hand until it has healed.
+
+
+
+**************
+RANGED WEAPONS
+**************
+
+Version 0.31 brings another aspect to the art of fighting. Using bows and
+crossbows it's now possible to tease your enemies without being next to
+them. Just ready your arrows and your bow and shoot them. 
+
+Any items can be used as missiles, but bows and crossbows can only shoot
+arrows and bolts.
+
+Ready missiles and missile weapons with the usual 'q' (eQuip) command. To
+shoot a target, use 't' command.
+
+After you've equipped a missile (ie arrow or bolt) for your missile equip
+slot, you will always ready a new missile of the same type after shooting
+the previous one. This is done until you run out of missiles of that type.
+
+When you are targetting a missile ('t') the game will automatically select a
+target in your sight. This is NOT the nearest target, it's the first visible
+target. You can switch between visible targets by pressing 'n' during the
+targetting mode. To shoot a missile, press either 't' or SPACE. 
+
+
+*************
+SHOPS & MONEY
+*************
+
+Money
+-----
+
+Money, in Salmorria, comes in three flavours: Gold, silver and copper
+coins. Money can be founded from all around the dungeons where the most
+unfortunate adventurers have died or forgotten something in a hurry while
+running away from something big'n ugly.
+
+Gold coins are naturally the most valuable of these three. The relationship
+of these coins are like this:
+
+                1 gold = 4 silver = 8 copper
+
+                another approach:
+
+                1 copper = 0.125 gold
+                1 silver = 0.25 gold
+
+You don't need to worry about this, the shopkeepers all around Salmorria
+should have enough knowledge to bill you the right amount of money from your
+purse. Report the authoritatives immendiately if you observe a shopkeeper
+cheating you. There're laws set up against this kind of behaviour you know.
+
+Shops
+-----
+
+Cities usually have shops of several types. Some of the most popular
+dungeons can also have shops in them, althought they are much rarer in
+dungeons. Most common types of shops to find are general stores, armour and
+weapon shops and the food markets, libraries and magic shops are rarer.
+
+Every shop has a shopkeeper who also is the owner of the shop. He will
+assure that all customers will also pay their bills and he will also alert
+guards for thieves if necessary. Shopkeepers are generally very unhappy
+people, they're always complaining about something, someone or just nagging
+for fun. Don't care too much about them. Just pay your bill and everything
+is fine (from the shopkeepers point of view). There're so many thieves
+around on these days, you can almost understand some of the anger carried by
+the shopkeepers.
+
+Buying stuff
+------------
+
+When you walk around the shop, you will see descriptions of the items stored
+in the shelves. The description is always followed by a price tag, this is
+the amount you must pay to have that item for yourself. To buy an item, just
+pick it up (with ',') and pay for it with 'B' if you don't want to try
+stealing it. However, stealing might be quite difficult since the
+shopkeepers are keen to guard the door area when a customer is inside the
+shop. (anti-instruction: To steal something you just have to get the item
+outside by some means.)
+
+Selling stuff
+-------------
+
+Use your drop key ('d') to sell items inside the shop. When you drop
+something the shopkeeper will ask you if you want to sell the item.  During
+this question (s)he also makes you an offer on the item in question.
+
+Some shops accept only the specific types of items. Ie. You can't sell food
+inside a weapon store. General stores generally accept everything.
+
+Prices
+------
+
+Shops usually define their prices in gold coins. So when you pay your bill
+your purse will be checked if the total sum of your gold, silver and copper
+is enough to pay your bill. Shopkeepers will always take the gold first then
+go to the silver and last (but not least) take the copper away.
+
+As a free service, the shopkeeper will at this time also exchange your
+smaller coins for bigger ones. Copper will be changed to silver and gold if
+you have enough for the exchange.
+
+
+Bill (not Gates :)
+----
+
+You can check out your current bill (unpaid items total) with 'B' and pay
+your debts with 'P'. Currently you can only pay for ALL collected items at
+once, so collect only those items you want to pay for before pressing
+P. Later there might be a new feature which allows you to pay items one by
+one.
+
+
+Note on shops
+.............
+
+
+To make stealing a bit harder, shops are usually designed so that diagonal
+movements are not possible towards the shop entrance area. You must pass
+through the cash register to get out.
+
+
+
+**********************
+DISPLAY AND VISIBILITY
+**********************
+
+Your adventures will always be displayed from the overhead map. You can
+always see the areas you've already visited but not the items and creatures
+located in them. Items and/or creatures will only show up when you have are
+near enough to see them and you have a line-of-sight from your position to
+the position of the item/creature. 
+
+Your character has only a limited range of visibility and (s)he can't see
+behind the corners in any cases. This visibility is simulated with a
+Line-of-Sight system. Basic idea is just as simple as it could be, you can
+see monsters and items if there are no obstacles between you and the item
+and if the distance is low enough. Creatures are not handled as an obstacle
+in the current state of the game.
+
+While you walk, items will pop up from the border areas of your sight range
+and disappear from the another border.
+
+If you're not carrying light, you will not see nothing but the walls of the
+dungeons as you remember them. 
+
+By using 'l' (look around) command you can examine your surroundings. BUT
+only those locations you can see. You can't examine dark areas without
+light, you can't look over walls and so on.
+
+
+*********
+MATERIALS
+*********
+
+In the Salmorrian Mountains there are many caves and dungeons, and those are
+filled with many types of items. Every item has been made out of some
+material (well almost every item). Some of the materials are better, some
+are worse. Some materials are more valuable than the others and some
+materials are better in combat, lasting longer and giving more protection
+and damage, maybe even speed and other valuable bonuses.
+
+Naturally, most valuable materials are found less often. So when you find
+something special, take it away even if you don't need it right away, it
+might not be there next time you pass by and you could earn a few gold
+pieces by selling the item at the nearest general store.
+
+
+
+
+*****************
+TORCHES AND LIGHT
+*****************
+
+Some areas in the world are dark and unlit. You must bring the light with
+you because unlit rooms can be very dangerous places for careless
+adventurers. (I can say that with experience)
+
+Using light items
+-----------------
+
+You must be wielding a light for it to work. The lantern or torch must be in
+your left or right hand.
+
+In this version you don't have to light the lantern on, it will be done for
+you. And another gimmick of this version, the light doesn't burn out.
+
+
+
+**************
+CONFIG OPTIONS
+**************
+
+There're several options which can be changed from inside the game.  You can
+press '\'-key to get a (primitive) interface to these options.
+
+To set a particular option you must type the keyword for that option you
+want to modify. To get a list of all available options, use '?'  when
+prompted for the option keyword.
+
+There're three types of variables, string, integer and boolean.
+
+String variables can contain any character string.  Integer variables can
+contain negative or positive integers.  Boolean variables can contain just a
+"true" or "false" strings. When you quit the game, it saves all these
+options to a text file so they can be restored in your later sessions.
+
+Here's a list of currently available options and their descriptions.
+
+ITEMDISTURB Boolean, (true)
+	    If true, walk mode will abort when you walk on an item.
+
+MONSTERDISTURB Boolean (true)
+	    If true, walk mode will abort when a monster is in your
+	    sight
+
+DOORDISTURB Boolean, (true)
+	    If true, walk mode will abort when a door is next to your
+	    location, in any direction.
+
+STAIRDISTURB Boolean, (true)
+	    If true, walk mode will abort if you walk to a location of
+	    staircase
+
+REPEATUPDATE Boolean, (true)
+	    If true, screen will be updated when you're in walk mode.
+	    Note: screen update will be much slower if set to true
+
+ANYKEYMORE  Boolean, (false)
+	    If true, any key is accepted when a (more) prompt is displayed.
+
+FOODWARN    Boolean, (true)
+	    If true, you will get a repeated warning if you're about to
+	    get fainted.
+
+COMPACTMSG  Boolean, (true)
+	    If true, repeated messages will be compacted inside the message
+	    buffer.
+
+COLORMSG    Boolean, (true)
+            If true, you get all colored messages as in previous versions.
+	    But if you disable this option, all messages come in whiter
+	    shade of pale.
+
+INVERSESIGHT Boolean, (true)
+	    If true, visible screen areas will be displayed in inverse color.
+
+SHOWLIGHT   Boolean, (true)
+            If true, the torch lit area will be displayed with bright yellow
+            color.
+
+AUTOPICKUP  Boolean, (false)
+	    If true, items will be taken automagically when you walk into a
+	    location of item. If the location has multiple items, they will
+	    NOT be taken automagically.
+
+	    See also variable PICKUPTYPES.
+
+PICKUPTYPES String, ("%$")
+	    If "all", all item types will be taken automagically.
+	    If "" (empty), nothing will be taken automagically.
+	    Each item type listed in this string, will be taken 
+	     automagically.
+
+GETALLMONEY Boolean, (true)  
+	    If true, when getting money (gold, silver and copper) from
+	    the ground, all coins will be taken at once.  
+	    If false, you will be asked how many coins you want to get
+
+DROPPILES   Boolean, (false)
+	    If true, item piles will be dropped at once without any
+	    questions. If false (default) you will be asked for the 
+	    item count.
+
+AUTODOOR    Boolean, (false)
+            If true, doors will be opened automagically when you move to 
+            them. Some doors might still require multiple attempts to open.
+
+REPEATCOUNT Integer, (50)
+	    Default repeat count for repeatable commands (walk mode).
+
+HEALTHALARM Integer, (50)
+	    If the health points in any of your bodyparts fall below
+	    this percentage of the maximum, you will get a warning.
+
+DEBUGMODE   Boolean, (false)
+	    Only usable for debugging.
+
+
+
+*********** 
+TEXT VIEWER 
+*********** 
+
+(V0.31) There's a simple internal text viewer inside the game. Some of the
+internal commands will use this viewer for displaying textual information. 
+
+	For example:
+
+	:?k    keyboard help
+	:?m    manual
+	:m     message buffer
+
+Keyboard commands for the viewer are:
+
+	PAGE UP/-	previous page
+	PAGE DOWN/+	next page
+	HOME/t          top of text
+	END/b		bottom of text
+        8/UP            scroll line up
+        2/DOWN          scroll line down
+
+
+
+
+*************
+GAME CRASHED?
+*************
+
+From version 0.27 on the game contains a simple error handler which should
+handle the most common errors. (Somehow, it doesn't seem to work under
+Linux!?)
+
+The game is in early development state so there probably are many unseen
+bugs roaming around the code.
+
+If such an error happens, Saladir reports it to you and writes an error
+report to a file named as SALADIR.ERR. This is a plain text file containing
+some information collected from the game at the time the game crashed. If
+you see such a file floating on your HD, send it to me.
+
+My email address is: ernomat@evitech.fi
+
+
+
+******************************
+LEGEND OF SALADIR MAILING LIST
+******************************
+
+The mailing list is currently out of operation.
+
+
+**********************************************
+WHERE CAN I FIND LATEST VERSIONS OF THIS GAME?
+**********************************************
+
+You must go to my homepage and check out the downloads section at
+
+        www.evitech.fi/~ernomat/index.html
+
+
+******************
+THANKS AND CREDITS
+******************
+
+ This part is to be a place for thank yous and credits for this game.
+ Currently it's not very big but here are the persons I owe much.
+
+ More personal thanks to the following persons (and cats):
+
+ o Thomas "The very corrupted adventurer" Biskup
+
+        Yes, dude, it's you who helped me when I was starting this game.
+        Remember those awfull questions about some particular coding
+        stuff. It really helped me a lot, without your help, I think it
+	would've proven quite impossible to port my game for Linux. Now
+	it went out quite painlessly. 
+
+        Also, I think it's VERY noticeable that my game looks similar to
+        ADOM in many parts. I've tried NOT TO COPY anything but I really
+        like ADOM very much and I play it very much too. I want to make
+        some things like ADOM does. Thanks for making such a great game
+        like Ancient Domains of Mystery is.
+
+ o William Tanksley
+
+        For providing a really great random number generator for my
+        roguelike game. Life would be a pain without your routine.
+ 
+ o Darren Hebden, the roguenews guy.
+
+        Thank you for posting announcements of my game to your news
+        page! Also thanks for many nice ideas you posted on the
+        mailinglist.
+
+ o Jarno "da lil'bro" Tuomainen
+
+        For being my victim in the test process. Countless times I've
+        sent him new versions of Saladir and countless times has he
+        tested them with his NT-machine. Thanks, and please be my victim
+        in the future too.
+
+ o Osku Salerma
+
+	For being my victim in the test process. He has downloaded
+	countless Linux versions and sacrificed his system for my
+	"unknown" attacks. Thanks also for the nice discussion we have
+	concerning the development of roguelike games. Let's hope you
+	have something to announce some day... :-)
+
+ o Suvi
+
+        My girlfriend who doesn't get mad even I stay up almost the
+        whole night with my computer.
+
+ o Inka and Natasha
+
+        My two female cats who have accompanied my lonely coding nights
+        by sitting on my lap. Meoww..
+
+ Thanks for all nice ideas and other suggestions for Saladir: (in
+ alphabetical order):
+
+	Chris Allcock.
+	Thomas Biskup,
+	Douglas Goodall, 
+	Darren Hebden,
+	Rune Jarnæs,
+	Osku Salerma,
+        Michael R. Taylor,
+        Jarno Tuomainen.
+
+	(list hopefully growing...)
+
+
+***********************
+HISTORY - Is there any?
+***********************
+Read file HISTORY.TXT included with the distribution.
+
+
+**********
+DISCLAIMER 
+**********
+
+Although this program is NOT developed to be harmfull, I must state that I
+am not responsible for any damages caused by this program, to you, your
+equipment or anything else. If you execute this program, you take all the
+responsibility for things that may happen. 
+
+
+******************
+AUTHOR INFORMATION
+******************
+
+Legend of Saladir is being programmed by Erno Tuomainen, I also manage the
+Linux port of the game.
+
+
+Homepage:       www.evitech.fi/~ernomat/index.html
+my email:       ernomat@evitech.fi
+
+snail mail:     Erno Tuomainen
+                Serkustentie 1 G 62
+                00430 HELSINKI
+                FINLAND
+
+        --------------------------------------------------------
+                  END OF LEGEND OF SALADIR PRE-MANUAL

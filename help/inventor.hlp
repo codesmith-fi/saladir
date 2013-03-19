@@ -1,0 +1,170 @@
+                **************************************
+                Inventory and Item manipulation screen
+                **************************************
+
+
+Available keyboard commands:
+
+CTRL+O		Open a container
+CTRL+T  	Transfer selected items to a container
+CTRL+I		View this help file
+
+a..z    	Select ONE item and close the screen
+A..Z		Toggle selection of one item
+<item face>	Select visible group
+
+PGUP		Scroll page up
+PGDN		Scroll page down
+UP		Scroll one item up
+DOWN		Scroll one iten down
+
+ENTER		Confirm selection and close screen
+SPACE		Cancel selection and close screen
+ESC		Cancel selection and close screen
+
+
+**************************************
+General notes about the inventory view
+**************************************
+
+If the inventory contains any containers (items capable of containing
+other items) they will show up always so you can access any items
+stored inside.
+
+You can see the name of the active (visible) item group on the second line.
+
+
+*******************************
+Changing the visible item group
+*******************************
+
+You can select a visible item group (ie. Money, Food,...) by
+pressing the character describing the item (its face). Here's a list
+of all item groups and their faces.
+
+	   '('	One handed weapons
+	   ')' 	Two handed weapons
+	   '}' 	Missile weapons
+	   '[' 	Shields
+	   ']' 	Armor
+	   '-' 	Tools
+	   '&' 	Amulets
+	   '\' 	Wands
+	   '=' 	Rings
+	   '"' 	Books
+	   '?' 	Scrolls
+	   '!' 	Potions
+	   '{' 	Instruments
+	   '+' 	Lights
+	   '/' 	Missile ammunition
+	   '~' 	Bracelets
+	   '%' 	Comestibles
+	   '$' 	Valuables
+	   '*' 	Rocks & gems
+	   '_' 	Specials
+	   '0' 	Containers
+
+Note that not all commands allow you to select the visible group. For
+example, command "Eat" will only allow FOOD items to be viewed.
+
+Another thing to keep in mind: 
+
+When you change the visible group all item selections will also be cleared.
+
+
+*****************
+Selecting item(s)
+*****************
+
+Depeding on the operation you want to perform, the item list viewer will
+allow you to select multiple items or only one item only.
+
+To select one item, press the lowercase letter of the item you want to
+operate. Pressing a lowercase letter *always* selects only one item and
+closes the inventory screen.
+
+To select multiple items, press the uppercase letter of the item you want to
+operate. This will toggle the selection on that particular item.  
+
+To confirm your selection and close the inventory screen, press ENTER.  
+To cancel your selection, press SPACE or ESC.
+
+
+*******************************
+Taking items out of a container
+*******************************
+
+Press CTRL+O to open the container, you will be presented with a list of
+items stored inside the container item you selected. Now, toggle the
+selection on all items you want to move (use uppercase letters A..Z).
+
+If you want to confirm the move, press ENTER/RETURN. 
+If you want to cancel the move, press SPACE or ESC
+
+Items can be transferred from the current level to the previous level only.
+
+
+*****************************
+Moving items into a container
+*****************************
+
+On the current item list, toggle the selection on all items you want to move
+into a container stored in this level of inventory. Presss CTRL+T to
+transfer items, you will be asked for a target container.
+
+Items can be transferred from the current visible level only.
+
+
+***************************
+Level and player item lists
+***************************
+
+There're no operational differences to the above instructions when you're
+listing items lying on the floor.
+
+You can pick up items from the ground level as usual. If you pick up an item
+which is a container, all items stored inside the container will also be
+picked up (they come with the container). The same applies when you're
+dropping items.  
+
+If, while browsing the ground level inventory, you open
+a container lying there, you can't PICK UP items to your inventory from the
+container level. You must first move the item to the ground level
+first. (Why not pick up the container?)
+
+Does it sound a bit complex?
+
+Look at the picture
+
+		Top level inventory (ground or your backpack)
+		|
+		wooden staff
+		milky potion
+		a bag
+		|   |
+		|   242 gold coins
+		|   a diamond
+		|   a purse
+		|   |     |
+		|   |     a horn
+		|   |     piece of meat
+		|   |     |
+		1)  |     3)
+		    2)
+
+
+1)   this is the top level inventory, it can be either a list of
+     items lying on the ground or stored inside your backpack.
+
+     You will see items WOODEN STAFF, MILKY POTION and A BAG here
+
+2)   When you press CTRL-O and open the BAG you are viewing this level
+     of the inventory.
+
+     You will see items 242 GOLD COINS, A DIAMOND and A PURSE here
+
+3)   When you again press CTRL-O and open the PURSE you see on the level
+     2) you will see this level.
+
+     You will see items A HORN and a PIECE OF MEAT here.
+

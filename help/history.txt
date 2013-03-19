@@ -1,0 +1,343 @@
+**************************************
+History file for the Legend of Saladir
+**************************************
+
+   "Something to do" release V0.35
+   -------------------------------
+   Changes
+   - Talk/chat system updates. Some special NPC's have now their
+     own recognizable words and responses.
+   Bugfixes
+   - When a container was created, it always contained some small 
+     amount of gold. Fixed.
+
+   "Shoot the damn shopkeeper" release V0.34
+   ---------------------------------------------
+   Changes
+   - Monster AI updates. Most importantly, some monsters/creatures are now
+     able to find a way from point A to point B. 
+   - Huge inventory system updates, unified LEVEL, MONSTER and PLAYER
+     inventories. System supports container items (items which can
+     contain items). 
+   - Inventory browser updates. Allows multiselection on some operations.
+   - Keyboard command system redesigned, now supports key redefinitions
+     (huge thanks to O. Salerma for a hint :)
+	o many keyboard changes, check the list inside game (?, :?k)
+   - Damage code re-implemented, supports material/element damage.
+     (ie. fire damage, cold damage...)
+   - New internal text viewer (replaces many old viewers)
+        o help menu with '?'
+	o manual directly with, ":?m"
+        o list of keyboard commands with ":?k"
+        o list of config variables with ":?v"
+	o quest list with ":q"
+        o message buffer with ":m"
+   - Traps, doors and dungeon locations can be lethally wired. :-)
+   - Secret doors/passages and a command for searching them
+   - New skills
+	o searching, search your surroundings for traps and other
+	  special stuff
+	o command :s toggles a searchmode.
+	o disarm trap
+	  will TRY to disarm the first known trap around you.
+   - New equip slot: TOOL, can be used for ie. torches
+   - Quest code got implemented. It's in very basic state but
+     one test quest is working (it will be removed from the game
+     later since it's just a joke) and it can also be completed.
+   - Enchanted items (read. artifacts, ego items etc.) now possible.
+     Item can modify every stat, give special conditions, element
+     protection (fire, ice etc), etc.
+     The system makes it possible for YOU to enchant items, maybe I 
+     will add a spell "Enchant Item" later.
+   - Resistances, certain races are resistant to certain elements.
+     like fire, electricity etc.
+   - Items can provide element resistances. Resistances are handled
+     per limb, like armor which protects only certain parts of the body.
+   - Command ":q" lists all active quests.
+   - New spells and scrolls
+   - Push implemented. You can push items and boulders around. ('p')
+   - At the same time, implemented "unpassable items", these act like
+     walls. Some of these items can be pushed around, like boulders.
+   - Ranged weapons, bows, throwing
+   - Missiles equip automagically from your inventory after you've equipped
+     the first item. This happens until you run out of your missiles of that
+     type.
+   - Selecting a missile attack target ('t') automatically targets monsters
+     and next visible monster can be switched with 'n' during this
+     targetting mode. 
+   - During nights, outworld map (and town) is dark. (still visible though)
+   - New config option: AUTOPUSH
+     When enabled (default) you'll automatigically try to push everything
+     when you move. Try moving towards a large boulder.
+   - New config option: EXTRALIGHT (default off)
+     When enabled, all areas which are lit up by monsters will be displayed.
+     Might be quite SLOW! 
+   - New config option: TARGETLINE
+     When enabled, a targeting line will be displayed while
+     selecting a target for missile/spell attacks.
+   - New config option: DROPPILES
+     When enabled, item piles will be dropped at once.
+   - When a shopkeeper dies, it should now be possible to use items
+     contained in his/her shop. (there was some code missing :)
+   - Complete re-training of my friendly shopkeepers took in place. :)
+     a) They no longer "stupidly" run around the door area when you're
+	in the shop.
+     b) You can exit the shop by moving diagonally.
+   - Status code re-implemented. Now all creatures hold their special
+     status conditions (ie. confusion, poisoned) in an linked list.
+     Allows *very* easy additions of new condition types. One drawback
+     is that this system is much slower. :)
+   - Items can be sold anywhere inside the shop, not just near the keeper
+   - Walk mode changes, works diagonally in rooms.
+   - Line-of-Sight code replaced (again) with faster algorithm. It gives
+     a better view area when you walk near corners.
+   - Fixed one monster movement bug. Caused monsters to freeze when trying
+     to move near level borders. 
+   - You can eat food from the ground, even there're multiple items at
+     your location.
+   - Town crash bug fixed, after visiting the Dungeons of Santhel the game
+     crashed when leaving town to the wilderness area.  
+   - Terrible "Endless Abyss"-bugs fixed.
+   - The item generator won't always create new items.
+   - Weather effects show only when you're outside. :)
+   - The game should not generate as much cursed items as before
+   - Not as much corpses as before.
+   - Darkness works better
+   - Huge save routine updates
+
+   Skill & Magic release V0.30. 19.04.1998
+   ---------------------------------------
+
+   Changes/additions, in no particular order
+   - Primitive scoreboard which will show personal best, alltime best 
+     and alltime worst scores
+   - Some work done with the outworld map, it's still unfinished.
+   - Shopkeeper knows about other creatures too
+   - Class system dumped out. 
+     Monsters, however, are still tied to the old class system.
+   - Some cloth items (shirt, pants etc.)
+   - Scroll items.
+   - Skill code, weapon skills, magic skills and some generic skills.
+   - Skill list box for selection and "in-game" usage.
+     Allows you to tag quick skills (10 quick skills) and browse
+     the list of skills in your possession.
+   - During character creation you receive a weapon related to your
+     highest weapon skill.
+   - Quick skills can be used with special commands :0 .. :9.
+   - Some basic magic spells and scrolls that use them.
+   - Spells in four gategories (more in the manual), Observation, Mysticism,
+     Alteration and Destruction. For each of these "magic"-group there's a
+     skill to learn.
+   - Descriptions for currently existing skills and spells.
+   - Tactics
+   - Monsters can now equip some items.
+   - Limits for backpack weight. (burden, strain and overload status)
+   - Seasons and weather conditions (not much use yet)
+   - Inventory system redesigned, in the code level all equipped items
+     are held inside the owners main inventory.
+     Equipped items can now be seen on the main inventory display.
+     I changed the way Saladir handles equipped items because of
+     spells like Identify/Curse/Uncurse etc.
+     These spells must have access to all equipped items as well,
+     (ie. to remove a cursed item which you "accidentally" equipped)
+     the new system makes it possible. All items carried by you
+     are held in one linked list, whether they are equipped items
+     or not. It was a huge modification to the code because before
+     all equipped items were kept in an separate array.
+   - Due to the above inventory change, equipped gold, silver or
+     copper coins (ie. money) are *NOT* calculated as your wealth.
+   - Item status code changed, now items have counters
+     telling how many times the item has been used.
+     Some materials last longer some doesn't.
+   - Food system is totally redesigned.
+   - Maze type levels are now a bit different.
+   - Cursed items can't be removed.
+   - Optimizations again. I KNOW the game is *SLOW*, I have a "hungry"
+     programming style. But this time I was able to make the dungeon
+     routine significantly faster by just reorganizing my "pass_turn"
+     routine.
+   - Basic error handler for SIGSEGV, SIGINT and other alert signals.
+     Error report is generated on fatal errors (if possible)
+   - New platform: Linux (ELF binary) version, dynamic and static versions
+   - Temporary files are now compressed to save (valuable?) disk space
+     (It is a modified LZW compression based on the
+     article in Dr.Dobbs Journal by Mark R. Nelson (1989))
+   - Walking to walls nomore causes damage, it was silly (althought
+     realistic).
+   - Repeat walking nomore opens doors automagically.
+   - Repeat walking code got mutated a bit: (w-command)
+     1) it won't open doors automagically
+     2) you can walk on straight dungeon corridors with it
+        and it will follow the passage if a direction changes
+     3) you can walk in rooms with repeat walk, But not yet diagonally.
+     4) repeat walk stops when there're fewer or more possible directions
+        of movement than at the start point where you issued the command
+        to walk repeatedly.
+     5) Remember these options: ITEMDISTURB, MONSTERDISTURB, DOORDISTURB,
+	and STAIRDISTURB. They all modify the way repeat walking works.
+   - You can't walk on water anymore.
+   - Level editor has two new commands, one for making the whole
+     map visible, one for hiding the whole map. (F7, F8) 
+   - Configurable autopickup (option AUTOPICKUP and PICKUPTYPES)
+   - Doors can be set up to open automagically (AUTODOOR variable)
+   - Character creation under hard construction, question based
+     creation dumbed out (atleast for now, let's see how do you like
+     the new system)
+   - New option COLORMSG, if enabled you get those colored game messages,
+     if disabled, all messages come in whiter shade of pale (white).
+   - New option SHOWLIGHT, if enabled the engine will display the torch
+     lit area in bright yellow color.
+   - Configuration options are now stored in a file (saladir.cfg) which
+     can be edited with any text editor.
+
+   Bug fixes
+   - (null) pointer bug from item status code removed
+     caused crashes when item status went worse!
+   - Couple of *BAD* algorithm bugs fixed. They caused segment
+     violations.
+     (Delete a node from linked list and then traverse to the next
+     node in the list... need I say more? :)
+   - Broken light items don't emit light anymore
+   - Shopkeeper won't keep you responsible if someone else has
+     attacked him
+   - Items should now be usable after a successful steal
+     You can't use unpaid items inside the shop, of course. :)
+   - Lots and lots of other bugfixes. How can there be so many bugs anyway
+
+
+
+   Shopping release V0.26 29.01.1998
+   ---------------------------------
+   This version doesn't contain as much of new features as the couple
+   last releases I've made. Main focus was on shopping and shops.
+
+   Changes include:
+   - Line of Sight code optimized a bit. I hope
+     the towns are working faster!
+   - You can buy and sell items in shops.
+   - Shopkeepers will now guard the shop for thieves.
+   - Armour, weapon, food and general stores are available.
+     (also in dungeons!)
+   - Money routines for handling the 3 types of money.
+   - Rooms and shops are now saved in tempfiles.
+
+
+
+
+   Update release V0.25  26.01.1998
+   --------------------------------
+   Changes include:
+   - Some levels look better, generates some corridor types better.
+   - Monsters have an ability to get past of player/other monsters
+     in some situations.
+   - Monsters are in the same 5-slot hitpoint system as the player!
+     Not all monsters have all bodyparts! (ie. spiders doesn't have hands)
+   - Attacking is handled (hopefully) a bit more nicely.
+   - Some animals can open doors.
+   - Food items added.
+   - Towns, however they are pretty empty currently
+   - Basic shop and shopkeeper code.
+   - Flying creatures now have wings/vanes instead of hands and for now.
+     They can't move if hitpoints in wings are fallen to zero.
+   - Special plot/quest character can be created to predefined places
+     or dungeons.
+
+   - Few optimizations done with the line of sight routine!
+
+   Bug fixes:
+   - Doors cause walk mode to end (You can set that in options)
+   - Stair generation bug fixed, generated WEIRD connections when a
+     lair was generated to the level.
+   - Monster regeneration bug fixed.
+   - One bug causing random crashes (pagefaults) debugged out.
+
+   Noticed bugs not corrected:
+   - Shops do not work! Shopkeepers don't have eyes. :)
+   - Town levels get up staircase generated (you can get to the wilderness
+     from that)
+   - Towns look dull and empty
+
+
+  Urgent bugfix version V0.24  22.01.1998
+  ---------------------------------------
+
+  These SHOULD be fixed now:
+  - You can now fight when your legs are in bad condition.
+  - Hp regeneration now generates damaged parts semi randomly.
+  - Hp regeneration restores the damage condition of damaged
+    bodyparts to OK when hitpoints raise above 0.
+  - Configuration variable HEALTHALARM now acts as a percentage
+    value for EACH bodypart which has hitpoints. When hp goes
+    below this percentage of the maximum hitpoints of that part you
+    will get a warning.
+  - There were several output leaks in Equip screen when bodypart
+    was damaged.
+  - Items should be dropped correctly when hand damages.
+  - Monsters should not be generated to players location.
+  - Tempfiles should now be deleted when game exits.
+
+
+  Version 0.23  22.01.1998
+  ------------------------
+  This version has a lot of new stuff and bugfixes.
+
+  - Currently pretty limited, but working Monster inventories
+    similar to the player inventory system.
+    Currently they only pick the items up, and they can sense
+    the level for items, think something about items value etc.
+  - Level memory, already visited levels are remembered!
+    including monsters, items and level for now
+  - New speed system with SPEED attribute for each being!
+  - Separate materials for armor and other stuff.
+  - Terrain effects, like how terrain slows your movement down etc.
+    Some terrain can even make your movement faster (like road)
+  - Weapons get older in use, different behaviour with materials.
+  - Levels are no more so populated with rare items.
+  - New dungeon level types and room templates (ie Lairs/Zoos)
+  - Random name generator.
+  - 2 weapon combat (player only for now)
+  - Armor now works see the next place
+  - New hitpoints system, eventually this will be for all monsters
+    also, but for now only player has this:
+    Hitpoints are "divided" into five slots, Head, Left/Light hand,
+    Body and Legs, body has always the greatest hitpoints.
+    Player will die if the total hitpoints (all five slots calculated
+    together) or HEAD or BODY will fall below or to zero.
+    It's not very good at the moment but I will try to make it better.
+    Regeneration is a bit dumb for now, but I will think of something.
+  - Light items added, they can be used too.
+  - Line-of-sight got some bugs bashed while I was making the darkness
+  - effect.
+  - New improved LOOK command (l).
+  - Level advancing works somehow, currently it uses the experience
+    system, but I will try to think something extra for that.
+    (only hitpoints get upgraded from level advance for now)
+  - Monster race descriptions for all races currently in the game.
+  - Output has been tidyed up a bit again
+  - Some new items and monsters
+  - Dark rooms and darkness generally
+  - More configuration options and other minor tidbits.
+  - And finally, the save-feature is nearing completion :-)
+
+
+  Version 0.20 - 16.01.1998
+  -------------------------
+  - Some of the new features added to this version are:
+
+  - Online help
+  - Female or male players and monsters
+  - Equipping items
+  - Gold, silver and copper coins
+  - World time and calendar (including timers:)
+  - Player and monster regeneration (hitpoints)
+  - Piled items can be taken and dropped one by one
+  - Game configuration options (not saved yet)
+  - Food usage, starvation
+  - Equipped weapons are used in battle now...
+  - Dragonscale weapons are not possible anymore :-)
+
+    + many bugfixes
+
+Version 0.17
+  - This was the first public release.
+  - Nothing much to say, it's prehistoric

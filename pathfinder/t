@@ -1,0 +1,137 @@
+/*
+
+	Single direction linked list 
+
+  */
+
+#include <stdlib.h>
+#include <stdio.h>
+#include "list.h"
+#include "util.h"
+
+void init(Llist *list)
+{
+	*list = NULL;
+}
+
+/*
+ * Insert item in the list
+ * most recent item takes the first place in the list
+ *
+ */
+Node *insert(Llist *list, Tlistdata *data)
+{
+	Node *newnode;
+
+	newnode=malloc( sizeof(Node) );
+
+	if(!newnode)
+		return NULL;
+
+	newnode->c = *data;
+	newnode->next = *list;
+	*list = newnode;
+
+	return newnode;
+}
+
+/*
+ * Remove first item from the list 
+ *
+ */
+void removefirst(Llist *list)
+{
+	Node *aux;
+
+	aux = *list;
+
+	/* if empty, return and free nothing*/
+	if(aux == NULL)
+		return;
+
+	/* remove first item from the list */
+	*list = (*list)->next;
+
+	/* dealloc memory */
+	free(aux);
+}
+
+Tlistdata *getfirst(Llist *list)
+{
+	if((*list)==NULL)
+		return NULL;
+
+	return &((*list)->c);
+}
+
+int getbest(Llist *list, Tlistdata *end, Tlistdata *retdata)
+{
+	Llist *aux, prev, snext, sfree=NULL;
+	Llist old1=NULL, old2=NULL;
+	Tlistdata *data, *rdata;
+	unsigned int edist, estim;
+
+	aux = list;
+	edist = 9999;
+	data = getfirst(aux);
+	rdata = data;
+
+	if(data == NULL)
+		return 0;
+
+	while(data != NULL) {
+
+		estim = data->d + distance(data, end);
+		if(estim < edist) {
+			edist = estim;
+			rdata = data;
+			prev = old2;
+			sfree = *aux;
+			snext = (*aux)->next;
+		}
+		old1 = old2;
+		old2 = *aux;
+		aux = &((*aux)->next);
+		data = getfirst(aux);
+	}
+
+	*retdata = *rdata;
+
+	free(sfree);
+
+//	if(*list == prev)
+	if(prev == NULL)
+		*list = snext;
+	else
+		prev->next = snext;
+
+	return 1;
+}
+
+void showall(Llist *list)
+{
+	Llist *aux;
+	Tlistdata *data;
+
+	aux = list;
+
+	data = getfirst(aux);
+
+	while(data != NULL) {
+		printf("x=%d\ty=%d\tdist=%d\n", data->x, data->y, data->d);
+		
+		aux = &((*aux)->next);
+		data = getfirst(aux);
+	}
+}
+
+/*
+ * Clear and free all memory in the list indicated by 'list'
+ *
+ */
+void clear(Llist *list)
+{
+	while(*list)
+		removefirst(list);
+}
+

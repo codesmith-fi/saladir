@@ -1,0 +1,82 @@
+--------------------
+USING RANGED WEAPONS
+--------------------
+
+
+To use ranged weapons you either have to equip a missile weapon along
+with the correct missile type for that weapon, or you can equip a
+throwable weapon in your missile slot.
+
+Throwing
+--------
+
+Basically the game allows you to throw *anything*. But not all items
+will cause as much damage as others do. Just equip the item you want
+to throw in your missile equipment slot (G), and then just use the
+throw command ('t') to target and throw it.
+
+Some of the more effective throwable items include, throwing axes,
+daggers throwing stars and so on. 
+
+
+Shooting
+-------- 
+
+When you find a weapon which shows up under the label "Missile
+Weapons" in your inventory window. You can use that item to shoot out
+missiles. Of course, nothing limits you to use it only as a missile
+weapon, you can as well use it in a close combat situations too and
+hit with it.
+
+But the best use for missile weapons is for shooting out correct
+ammunition. The bows fire arrows, crossbows fire bolts and so on.
+
+Note, if you for example have equipped a bow along with some
+ridicilous ammunition like a cat corpse for example you still can
+throw the corpse out but the bow will not be used.
+
+
+Targetting
+----------
+
+When you activate the throw/shoot command ('t'), the game
+automatically targets a first available monster/person which is
+visible to you (it's not necessarily the nearest one). This targetted
+creature might not be hostile so take care who you shoot at. 
+
+You can select your own target by using the movement keys and when
+you're ready to shoot at, press either 't' again or press SPACE to
+shoot. To abort press 'q' or ESC.
+
+To cycle automatically to next visible target, press 'n'.
+
+
+Missile ammunition 
+------------------ 
+
+When you've equipped some missile ammunition, for example a pile of 10
+throwing daggers, your missile slot will display only one dagger in
+the slot at a time. But when you throw the dagger out you will
+automatically equip a new throwing dagger from your purse, that is if
+you have some daggers available in there. So, the game always tries to
+equip similar items until you run out of that particular item type
+(meaning a pile of items). 
+
+When you run out of missiles of the type you first equipped you will
+get a warning that you ran out of missiles.
+
+
+Overview of available keys during missile combat
+------------------------------------------------
+
+t		initiate throw/shoot command
+
+movement keys	move the targetting X
+t (during	shoot a missile to the location of X
+   targetting)  
+n		cycle to the next visible target
+SPACE           shoot a missile
+q/ESC           Abort targetting
+?/h		This help
+
+This is the end of help.
