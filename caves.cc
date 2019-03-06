@@ -132,7 +132,7 @@ _dungeondef dungeonlist[]=
 **
 ** char, color, description
 */
-struct _terrinfo terrains[]=
+_terrinfo terrains[]=
 {
   { ' ', C_BLACK,       0, 100, "Dark", }, 
   { '.', C_WHITE,	CAVE_PASSABLE, 100, "Path" },

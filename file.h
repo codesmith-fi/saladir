@@ -112,7 +112,7 @@ bool init_directories(void);
 bool clean_tempdir(void);
 bool clean_tmpfiles(void);
 bool save_tmpfile(level_type *level, int16s ndungeon, int16s nlevel);
-bool load_tmpfile(level_type *level, char *filename, bool);
+bool load_tmpfile(level_type *level, const char *filename, bool);
 level_type *load_tmplevel(int16s dungeon, int16s level);
 bool chdir_totempdir(void);
 bool chdir_todatadir(void);

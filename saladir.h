@@ -14,7 +14,7 @@
 #elif defined(__GO32__)
 #define _TS_DOS_
 #else
-# Error: Please define your target system in "saladir.h"
+#error: Please define your target system in "saladir.h"
 #endif
 
 

@@ -2,10 +2,9 @@
 # (C)1997/1998 Erno Tuomainen
 # 
 
-#CC=gcc
-CC=egcs
+CC=g++
 #LFLAGS=-o
-CFLAGS=-Wall -s -O6 -c
+CFLAGS=-std=c++11 -Wall -s -O6 -c
 #CFLAGS=-Wall -g -c
 CPPFLAGS=
 RM=rm
@@ -18,16 +17,16 @@ RELDIR=./release/$(RELNAME)
 #DEBUGFLAGS=-DMSS
 #DEBUGLIBS=-lmss
 
-EXTRADEFINES=-DSALADIR_RELEASE
+EXTRADEFINES=-DSALADIR_RELEASE -Dlinux
 #EXTRADEFINES=-D_TIME_MEASUREMENT_
 LIBS=-lncurses -lm
 
-objects = mycurses.o output.o dice.o \
+objects = mycurses.o generate.o output.o dice.o \
 	birth.o doors.o init.o memory.o raiselev.o \
 	utility.o caves.o dungeon.o inventor.o message.o \
 	shops.o variable.o classes.o file.o items.o monster.o \
 	skills.o skills_c.o creature.o magic.o tables.o \
-	damage.o generate.o main.o player.o process.o time.o \
+	damage.o main.o player.o process.o time.o \
 	talk.o options.o compress.o score.o weather.o \
 	scrolls.o weapons.o search.o status.o quest.o \
 	textview.o cmd.o traps.o outworld.o pathfind.o \

@@ -824,11 +824,11 @@ int16s skill_listselect(int16u group, char *prompt)
 }
 
 
-sint skill_compare(const Tskill *s1, const Tskill *s2)
+int skill_compare(const void* s1, const void* s2)
 {
    int16s res;
 
-   res = s2->cur - s1->cur;
+   res = ((Tskill*)s2)->cur - ((Tskill*)s1)->cur;
 
    return res;
 }

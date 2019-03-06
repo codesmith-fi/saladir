@@ -69,8 +69,8 @@ class Weather
    ~Weather(); /* destructor */
    
 //   Weather & operation=(const Weather & obj);
-   bool Weather::load(_FH_ fh);
-   bool Weather::save(_FH_ fh);
+   bool load(_FH_ fh);
+   bool save(_FH_ fh);
 
    /* change randomly according to the season */
    void passtime(int32u tickspassed, Gametime & mt);

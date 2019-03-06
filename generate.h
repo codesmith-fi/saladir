@@ -20,7 +20,7 @@ _monsterlist *monster_add(level_type *, int16u, int16u, int8u type);
 void monster_removeall(level_type *);
 void monster_listall(level_type *);
 int8u countchars(level_type *, int8u, int16u, int16u);
-bool inline ispassable(level_type *, int16s, int16s);
+bool ispassable(level_type *, int16s, int16s);
 bool haslight(level_type *level, int16s x, int16s y);
 void level_removemonster(level_type *, _monsterlist *);
 

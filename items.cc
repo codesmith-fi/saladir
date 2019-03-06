@@ -478,7 +478,7 @@ _foodlist foodlist[]=
  * Also, normally the item char to output will be taken from here
  *
  */
-struct _typelist gategories[]=
+_typelist gategories[]=
 {
    {'(', "One handed weapons"},
    {')', "Two handed weapons"},

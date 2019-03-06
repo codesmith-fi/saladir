@@ -154,7 +154,7 @@ typedef struct
       int8u	color;	// color of char
       int16u flags;	// terrain modifier flags
       int8u	timemod;	// walk time modifier (percentage 1-xxx)
-      char	*desc;	// short description
+      const char *desc;	// short description
 } _terrinfo;
 
 /* single grid in cave */

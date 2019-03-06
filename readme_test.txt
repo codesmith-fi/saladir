@@ -1,4 +1,4 @@
-/* readme.txt V0.31 test 15.05.1998 */
+/* readme.txt - Legend of Saladir V0.31 test 15.05.1998 */
 
 This again is not an official release version, just another test. This
 version has many new systems implemented so it's not sure how stable it is
@@ -32,6 +32,5 @@ computer.
 
  -Erno
 
-email: ernomat@evitech.fi
-www  : www.evitech.fi/~ernomat/
+email: erpakari@gmail.com
 

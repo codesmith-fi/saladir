@@ -1495,7 +1495,7 @@ int8u countchars(level_type *level, int8u ctype, int16u x, int16u y )
 }
 
 /* check cave grid for passability */
-bool inline ispassable(level_type *level, int16s x, int16s y)
+bool ispassable(level_type *level, int16s x, int16s y)
 {
    if(level->loc[y][x].flags & CAVE_PASSABLE)
       return true;

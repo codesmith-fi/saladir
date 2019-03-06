@@ -226,41 +226,6 @@ lindex++;
 
 }
 
-
-
-char txt_license[]=
-"-----------------------------\n
-LICENSE FOR LEGEND OF SALADIR\n
------------------------------\n\n
-Legend of Saladir is copyright 1997 - 1999 by Erno Tuomainen.
-All rights reserved.\n
-Legend of Saladir can be distributed and used freely if the following
-conditions are fulfilled.\n
-1. The binary executable and other datafiles listed in this file are
-   not changed in any way. All files in the original package must be
-   distributed together in unmodified form.\n
-   Files under this license are:\n
-        SALADIR.EXE     the main executable
-        SALADIR.TXT     the current manual
-        OUTWORLD.MAP    saladir wilderness map file
-        LICENCE.TXT     this licence agreement\n
-2. No money is involved in the process. You can however charge the
-   costs of storage media.\n
-I am not responsible for any damages caused by this program. You will
-use this program on your own responsibility.\n
-However, I assure that I have not planned any fatal or dangerous
-features inside Legend of Saladir.\n";
-
-
-char txt_cmdhelp[]=
-{
-     "The following command line parameters are available:\n
--l      license
--s      skip the animated logo at startup
--?      this help
--debug  start the game in debug mode\n\n"
-};
-
 void digline(char chr, int16s x1, int16s y1, int16s x2, int16s y2)
 {
    int16s d, x, y, ax, ay, sx, sy, dx, dy;
@@ -332,16 +297,11 @@ sint main(sint argc, char *argv[])
 	 if(!my_stricmp(argv[i], "-debug"))
 	    CONFIGVARS.DEBUGMODE=true;
 	 else if(!my_stricmp(argv[i], "-?")) {
-	    printf(txt_cmdhelp);
+	    printf("The following command line parameters are available:\n-s      skip the animated logo at startup\n-?      this help\n-debug  start the game in debug mode\n\n");
 	    return 0;
 	 }
 	 else if(!my_stricmp(argv[i], "-s")) 
 	    SKIPLOGO=true;
-	 else if(!my_stricmp(argv[i], "-l")) {
-	    printf(txt_license);
-//	    getch();
-	    return 0;
-	 }
 	 else {
 	    printf("Unknown command \"%s\" in parameter list!\n", 
 		   argv[i]);

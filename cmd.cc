@@ -247,18 +247,18 @@ Tcmd cmdtable[]=
    { NULL, { 0 }, NULL }
 };
 
-int compare_cmd(Tcmd *cmd1, Tcmd *cmd2)
+int compare_cmd(const void* cmd1, const void* cmd2)
 {
-   return strcmp(cmd1->name, cmd2->name);
+   return strcmp(((Tcmd*)cmd1)->name, ((Tcmd*)cmd2)->name);
 }
 
-int compare_cmd_key(Tcmd *cmd1, Tcmd *cmd2)
+int compare_cmd_key(const void* cmd1, const void* cmd2)
 {
    int32s sum=0;
    int8u i;
 
    for(i=0; i<CMD_MAXLEN; i++) {
-      sum=(int32s)(cmd1->keys[i] - cmd2->keys[i]);
+      sum=(int32s)(((Tcmd*)cmd1)->keys[i] - ((Tcmd*)cmd2)->keys[i]);
       if(sum!=0)
 	 break;
    }

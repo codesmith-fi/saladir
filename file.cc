@@ -1089,7 +1089,7 @@ bool save_tmpfile(level_type *level, int16s ndungeon, int16s nlevel)
    return res;
 }
 
-bool load_tmpfile(level_type *level, char *filename, bool compr)
+bool load_tmpfile(level_type *level, const char *filename, bool compr)
 {
    _FH_ fh;
    sint errors;

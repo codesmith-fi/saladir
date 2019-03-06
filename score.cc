@@ -205,18 +205,18 @@ bool score_checkintegrity(void)
    return true;
 }
 
-int score_compare(const Tscore *a, const Tscore *b)
+int score_compare(const void *a, const void *b)
 {
    int32s res;
   
-   res = (b->final - a->final);
+   res = (((Tscore*)b)->final - ((Tscore*)a)->final);
 
    if(!res) {
-      res = (b->moves - a->moves);
+      res = (((Tscore*)b)->moves - ((Tscore*)a)->moves);
    }
 
    if(!res) {
-      res = (b->time - a->time);
+      res = (((Tscore*)b)->time - ((Tscore*)a)->time);
 
    }
 

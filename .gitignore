@@ -2,7 +2,14 @@
 *.*~
 *~
 *.o
+*.d
 *.zip
 *.lz
 _version.h
-
+utils/buildver
+utils/convert
+utils/keys
+utils/view
+.vscode/*
+saladir
+saladir_version_file

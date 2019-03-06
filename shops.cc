@@ -21,6 +21,7 @@
 #include "shops.h"
 #include "pathfind.h"
 #include "pathfunc.h"
+#include "generate.h"
 
 #define SHOPNAME_ARMOURNUM 3
 #define SHOPNAME_WEAPONNUM 4
