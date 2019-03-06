@@ -3,8 +3,8 @@
 	desc: output routines used in the game
 */
 
-//#include "saladir.h"
-
+#include <string.h>
+#include <stdlib.h>
 #include "sysdep.h"
 
 const char *color_names[]=

@@ -1,12 +1,12 @@
 # Makefile for the Legend of Saladir
 # (C)1997/1998 Erno Tuomainen
 # 
-CC=egcs
+CC=gcc
 #LFLAGS=-o
 CFLAGS=-Wall -s -O3 -c
 LIBS=-lncurses
 
-all: keys view convert
+all: keys view convert buildver
 
 convert: convert.o
 	$(CC) -o convert convert.o $(DEBUGLIBS)

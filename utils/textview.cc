@@ -8,12 +8,12 @@
 
 #define BUFSIZE 512
 
-char *displaylines(char *txt, char *begintxt, int8u);
-void displaybuffer(char *txt, char *);
-char *backline(char *start, char *curtxt);
-char *nextline(char *, char *);
-int32u processtext(char *txt);
-bool is_text(register char *txt);
+const char *displaylines(const char *txt, const char *begintxt, int8u);
+void displaybuffer(const char *txt, const char *);
+const char *backline(const char *start, const char *curtxt);
+const char *nextline(const char *, const char *);
+int32u processtext(const char *txt);
+bool is_text(register const char *txt);
 
 bool viewfile(const char *filename)
 {
@@ -78,7 +78,7 @@ bool viewfile(const char *filename)
 }
 
 
-char *findbottom(char *txt, int32u *lines)
+const char *findbottom(const char *txt, int32u *lines)
 {
    *lines=0;
    while(*txt!=0) {
@@ -91,9 +91,9 @@ char *findbottom(char *txt, int32u *lines)
    return txt;
 }
 
-void displaybuffer(char *txt, char *filename)
+void displaybuffer(const char *txt, const char *filename)
 {
-   char *curtxt, *topline, *bottom, *back, *bottomline;
+   const char *curtxt, *topline, *bottom, *back, *bottomline;
    int16u key, i, perc;
    int32u linecount=0, cline=0;
    bool nocmd=false;
@@ -227,9 +227,9 @@ void displaybuffer(char *txt, char *filename)
    my_disablescroll();
 }
 
-char *nextline(char *curtxt, char *bottom)
+const char *nextline(const char *curtxt, const char *bottom)
 {
-   char *val;
+   const char *val;
 
    val=curtxt;
    while(*val!='\n' && val<bottom) {
@@ -247,7 +247,7 @@ char *nextline(char *curtxt, char *bottom)
 }
 
 
-char *backline(char *start, char *curtxt)
+const char *backline(const char *start, const char *curtxt)
 {
    bool fl=false;
 
@@ -289,7 +289,7 @@ bool is_printable(int ch)
    return false;
 }
 
-bool is_text(register char *txt)
+bool is_text(register const char *txt)
 {
    for(int16u i=0; i<20; i++) {
       if(!is_printable(txt[i]))
@@ -299,7 +299,7 @@ bool is_text(register char *txt)
    return true;
 }
 
-int32u processtext(register char *txt)
+int32u processtext(register const char *txt)
 {
    char *spc=NULL;
    int32u cy=0, cx=1, wlen;
@@ -318,7 +318,7 @@ int32u processtext(register char *txt)
       }
 
       if(*txt==' ')
-	 spc=txt;
+	 spc=(char *)txt;
 	 
       if(*txt=='\n') {
 	 cx=1;
@@ -340,9 +340,9 @@ int32u processtext(register char *txt)
 }
 
 
-char *displaylines(char *txt, char *begintxt, int8u numlines)
+const char *displaylines(const char *txt,const  char *begintxt, int8u numlines)
 {
-   char *dptr;
+   const char *dptr;
    int32s wlen, slen;
    int8u lc=0;
    bool wrap;
