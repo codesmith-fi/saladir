@@ -46,4 +46,5 @@ I also lurk in Discord with a id of "xanaki#9472" if you want to contact and tal
 
 My own discord channel is "Knights who say RPG" @ https://discord.gg/P4Uu3GU7tx
 
+My blog I just started is @ https://codesmith.hashnode.dev/
 
