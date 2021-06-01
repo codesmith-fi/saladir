@@ -3,7 +3,6 @@
 *~
 *.o
 *.d
-*.zip
 *.lz
 _version.h
 utils/buildver
