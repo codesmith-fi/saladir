@@ -17,5 +17,5 @@ Thanks,
 You can contact me via
 codesmith.fi@gmail.com
 
-I lurk in Discord with a nickname of "xanaki" if you want to contact and talk with me. You can also find me from several coding channels like One Lone Coder and GameFromScratch for example.
+I lurk in Discord with a id of "xanaki#9472" if you want to contact and talk with me. You can also find me from several coding channels like One Lone Coder and GameFromScratch for example.
 
